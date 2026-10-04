@@ -1,0 +1,26 @@
+-------------
+启动任务中心前端
+1, 启动docker
+2，进入项目根目录
+3，用docker启动项目：docker compose up -d
+4，访问：http://localhost:8080
+
+end：docker compose stop（只停dock服务，保留数据）
+
+ps：
+更改代码后重建docker镜像：docker compose up -d --build
+实时查看容器后台日志：docker logs -f evoagent3-evoagent-1
+查看当前容器ID：docker compose ps
+
+
+------------
+验证PR审查是否提交到评论区
+1，启动docker中对应的项目
+2，启动cloudflare（验证：/Applications/cloudflared version）
+    1️⃣ 启动隧道，开终端挂着。/Applications/cloudflared tunnel --url http://localhost:8080，拿到公网
+    2️⃣ 改.env中的EVOAGENT_PUBLIC_BASE_URL（每次拿到新的公网都要改），根目录下重建docker（docker compose up -d --force-recreate evoagent）
+        验证grep -n "EVOAGENT_PUBLIC_BASE_URL" .env
+    3️⃣ 配置github的webhooks
+        PayLoad URL：公网/webhooks/github; content type: json; secret: env中的EVOAGENT_GITHUB_WEBHOOK_SECRET；
+        选Let me select individual events，然后只勾选PR
+3，手动模拟一次PR，观察评论区是否出现审查报考（等待5分钟内）。
