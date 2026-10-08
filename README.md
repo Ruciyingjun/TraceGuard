@@ -1,5 +1,8 @@
 # EvoAgent PR Reviewer
 
+<img width="1557" height="1035" alt="792a64070a182a98d95ae45980979fe7" src="https://github.com/user-attachments/assets/ef94008d-bdf8-4700-8868-5075d4034b62" />
+<img width="1557" height="1035" alt="cebc007dee14a8cfcb1faca8352773e2" src="https://github.com/user-attachments/assets/94922ee2-3104-4a62-be84-87a82043bda8" />
+
 - 审查统一 diff，输出结构化问题、修复建议和测试建议
 - GitHub `pull_request` webhook（`opened`、`reopened`、`synchronize`）
 - `agentic` 运行模式：Lead、Security、Correctness/Reliability、Critic 多 Agent 协作
